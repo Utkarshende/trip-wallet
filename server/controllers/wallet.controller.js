@@ -1,6 +1,7 @@
 // controllers/wallet.controller.js
 
 import Wallet from "../models/Wallet.js";
+import Expense from "../models/Expense.js";
 
 // Add Contribution
 export const addContribution = async (req, res) => {
