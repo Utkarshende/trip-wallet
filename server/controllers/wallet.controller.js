@@ -63,3 +63,20 @@ export const addExpense = async (req, res) => {
   }
 };
 
+// Get Wallet Details
+export const getWalletDetails = async (req, res) => {
+  try {
+    const { walletId } = req.params;
+
+    const wallet = await Wallet.findById(walletId)
+      .populate("contributions.user", "name phone");
+
+    if (!wallet) {
+      return res.status(404).json({ message: "Wallet not found" });
+    }
+
+    res.json(wallet);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+};
